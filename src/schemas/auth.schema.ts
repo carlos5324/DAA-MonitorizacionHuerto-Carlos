@@ -1,0 +1,26 @@
+import { z } from "zod";
+
+export const registerSchema = z.object({
+  email: z
+    .string({ required_error: "El email es obligatorio" })
+    .email("El formato del email no es válido"),
+  password: z
+    .string({ required_error: "La contraseña es obligatoria" })
+    .min(8, "La contraseña debe tener al menos 8 caracteres"),
+  fullName: z
+    .string({ required_error: "El nombre completo es obligatorio" })
+    .min(1, "El nombre completo no puede estar vacío"),
+}).strict();
+
+export const loginSchema = z.object({
+  email: z
+    .string({ required_error: "El email es obligatorio" })
+    .email("El formato del email no es válido"),
+  password: z
+    .string({ required_error: "La contraseña es obligatoria" })
+    .min(1, "La contraseña no puede estar vacía"),
+}).strict();
+
+export type RegisterInput = z.infer<typeof registerSchema>;
+export type LoginInput = z.infer<typeof loginSchema>;
+
