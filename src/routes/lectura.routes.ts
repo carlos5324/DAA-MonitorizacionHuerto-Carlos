@@ -10,10 +10,10 @@ const router = Router();
 router.use(authenticateToken);
 
 
-// POST / - Crear una nueva lectura (valida el body)
+// POST
 router.post("/", validateBody(createLecturaSchema), createLectura);
 
-// GET / - Listar y consultar lecturas con filtros y paginación (valida los query params)
+// GET
 router.get("/", validateQuery(getLecturasQuerySchema), getLecturas);
 
 export default router;

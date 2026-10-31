@@ -16,7 +16,6 @@ const ok = (data: object) => ({
   },
 });
 
-// Campos de un sensor: se reutilizan en Sensor y en SensorInput (DRY)
 const sensorFields = {
   nombre: { type: "string", example: "Humedad invernadero" },
   tipo: { type: "string", enum: ["temperatura", "humedad", "luz"] },

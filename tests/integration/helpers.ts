@@ -11,14 +11,9 @@ let mongoServer: MongoMemoryServer;
 
 export const PASSWORD = "Password123";
 
-/** Tiene formato de ObjectId válido, pero no existe en la base de datos. */
 export const ID_INEXISTENTE = "64b7f0f0f0f0f0f0f0f0f0f0";
 
-// ---------------------------------------------------------------------------
-// Base de datos en memoria: no toca tu MongoDB Atlas.
-// ---------------------------------------------------------------------------
 
-/** Arranca un MongoDB temporal y conecta Mongoose a él. Se llama en beforeAll. */
 export async function startTestDB(): Promise<void> {
   mongoServer = await MongoMemoryServer.create();
   await mongoose.connect(mongoServer.getUri());
@@ -39,9 +34,7 @@ export async function clearDB(): Promise<void> {
   }
 }
 
-// ---------------------------------------------------------------------------
 // Usuarios y tokens
-// ---------------------------------------------------------------------------
 
 /** Cabecera Authorization lista para usar con supertest: .set(bearer(token)) */
 export const bearer = (token: string) => ({ Authorization: `Bearer ${token}` });
@@ -67,9 +60,8 @@ export async function registerAndLogin(
   return res.body.data.token as string;
 }
 
-// ---------------------------------------------------------------------------
+
 // Sensores
-// ---------------------------------------------------------------------------
 
 /** Cuerpo válido para crear un sensor; se puede sobrescribir cualquier campo. */
 export const sensorBody = (overrides: Record<string, unknown> = {}) => ({

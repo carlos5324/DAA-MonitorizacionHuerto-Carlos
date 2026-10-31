@@ -12,12 +12,8 @@ export default defineConfig({
 
     // Solo son tests los ficheros *.test.ts dentro de tests/ (en la raíz del proyecto).
     include: ["tests/**/*.test.ts"],
-    // Un fichero de test cada vez: cada uno arranca su propia base de datos en memoria.
     fileParallelism: false,
 
-    // src/config/env.ts exige estas variables al importarse. Se definen aquí con valores
-    // de prueba para que los tests no dependan de tu .env real.
-    // MONGODB_URI no se usa: los tests se conectan a una base de datos en memoria.
     env: {
       NODE_ENV: "test",
       PORT: "3999",
