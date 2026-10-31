@@ -104,7 +104,6 @@ Este procedimiento está pensado para la configuración inicial de la práctica 
 | `npm start` | Ejecuta la versión compilada |
 | `npm test` | Ejecuta las pruebas de integración |
 | `npm run test:watch` | Ejecuta las pruebas en modo observación |
-| `npm run typecheck` | Comprueba los tipos sin generar archivos |
 
 ## Pruebas
 
